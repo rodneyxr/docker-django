@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+    django:
+        extends:
+            file: common.yml
+            service: django
+        command: gunicorn -b :80 core.wsgi
+        ports:
+          - "80:80"
+          - "443:443"
+        environment:
+          - DEPLOY_ENV=production
+        depends_on:
+          - postgres
+
+    postgres:
+        image: postgres
+        container_name: postgres

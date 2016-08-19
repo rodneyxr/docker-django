@@ -1,0 +1,7 @@
+version: '2'
+services:
+
+    django:
+        build: .
+        image: rodneyxr/django
+        container_name: django
